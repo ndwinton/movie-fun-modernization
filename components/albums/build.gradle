@@ -12,7 +12,7 @@ dependencies {
     compile "org.slf4j:slf4j-api:$slf4jVersion"
 
     compile "com.amazonaws:aws-java-sdk:1.11.74"
-    compile "org.apache.tika:tika-core:1.19"
+    compile "org.apache.tika:tika-core:1.20"
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.7.0"
 
     testCompile "junit:junit:$junitVersion"
