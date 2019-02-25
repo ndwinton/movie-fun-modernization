@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.superbiz.moviefun.blobstore.BlobStore;
 import org.superbiz.moviefun.blobstore.S3Store;
+import org.superbiz.moviefun.movies.MovieServlet;
 
 @SpringBootApplication
 public class Application {
@@ -19,8 +20,8 @@ public class Application {
     }
 
     @Bean
-    public ServletRegistrationBean actionServletRegistration(ActionServlet actionServlet) {
-        return new ServletRegistrationBean(actionServlet, "/moviefun/*");
+    public ServletRegistrationBean actionServletRegistration(MovieServlet movieServlet) {
+        return new ServletRegistrationBean(movieServlet, "/moviefun/*");
     }
 
     @Bean
@@ -36,7 +37,6 @@ public class Application {
         String photoStorageAccessKeyId = serviceCredentials.getCredential("photo-storage", "user-provided", "access_key_id");
         String photoStorageSecretKey = serviceCredentials.getCredential("photo-storage", "user-provided", "secret_access_key");
         String photoStorageBucket = serviceCredentials.getCredential("photo-storage", "user-provided", "bucket");
-
         AWSCredentials credentials = new BasicAWSCredentials(photoStorageAccessKeyId, photoStorageSecretKey);
         AmazonS3Client s3Client = new AmazonS3Client(credentials);
 
